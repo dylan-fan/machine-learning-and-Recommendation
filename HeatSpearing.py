@@ -67,7 +67,7 @@ class HeatSpearing:
             recom_items[item] = float(recom_items.get(item)) / len(self.items2users.get(item))
         
         for item, score in recom_items.items():
-            top_recommendation.append((score,item))
+            top_recommendation.append((score,item) if item not in self.users2items.get(userid))
         top_recommendation.sort(cmp=None, key=None, reverse=True)
         
         return top_recommendation
@@ -118,7 +118,7 @@ class Probs:
         
         
         for item, score in recom_items.items():
-            top_recommendation.append((score,item))
+            top_recommendation.append((score,item) if item not in self.users2items.get(userid))
         top_recommendation.sort(cmp=None, key=None, reverse=True)
         
         return top_recommendation
